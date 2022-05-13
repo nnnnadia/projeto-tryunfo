@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../../style/inputs.css';
 
 export default class CheckboxInput extends Component {
   render() {
@@ -8,6 +9,7 @@ export default class CheckboxInput extends Component {
       name,
       checked,
       onChange,
+      dataTestid,
     } = this.props;
     return (
       <>
@@ -17,9 +19,12 @@ export default class CheckboxInput extends Component {
           name={ name }
           checked={ checked }
           onChange={ onChange }
-          data-testid={ name }
+          data-testid={ dataTestid }
         />
-        <label htmlFor={ name }>
+        <label
+          className="form-label less-label"
+          htmlFor={ name }
+        >
           { label }
         </label>
       </>
@@ -32,4 +37,5 @@ CheckboxInput.propTypes = {
   name: PropTypes.string.isRequired,
   checked: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
+  dataTestid: PropTypes.string.isRequired,
 };

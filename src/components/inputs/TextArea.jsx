@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../../style/inputs.css';
 
 export default class TextArea extends Component {
   render() {
@@ -8,18 +9,23 @@ export default class TextArea extends Component {
       name,
       value,
       onChange,
+      dataTestid,
     } = this.props;
     return (
       <>
-        <label htmlFor={ name }>
+        <label
+          className="form-label full-label"
+          htmlFor={ name }
+        >
           { label }
         </label>
         <textarea
+          className="form-input"
           name={ name }
           id={ name }
           value={ value }
           onChange={ onChange }
-          data-testid={ name }
+          data-testid={ dataTestid }
         />
       </>
     );
@@ -31,4 +37,5 @@ TextArea.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  dataTestid: PropTypes.string.isRequired,
 };

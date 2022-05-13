@@ -6,6 +6,7 @@ import NumberInput from './inputs/NumberInput';
 import Select from './inputs/Select';
 import TextArea from './inputs/TextArea';
 import TextInput from './inputs/TextInput';
+import '../style/Form.css';
 
 export default class Form extends Component {
   render() {
@@ -24,55 +25,63 @@ export default class Form extends Component {
       onSaveButtonClick,
     } = this.props;
     return (
-      <form>
+      <form className="new-card-form">
         <TextInput
           label="Nome"
-          name="name-input"
+          name="cardName"
           value={ cardName }
           onChange={ onInputChange }
+          dataTestid="name-input"
         />
         <TextArea
           label="Descrição"
-          name="description-input"
+          name="cardDescription"
           value={ cardDescription }
           onChange={ onInputChange }
+          dataTestid="description-input"
         />
         <NumberInput
           label="Atributo 1"
-          name="attr1-input"
+          name="cardAttr1"
           value={ cardAttr1 }
           onChange={ onInputChange }
+          dataTestid="attr1-input"
         />
         <NumberInput
           label="Atributo 2"
-          name="attr2-input"
+          name="cardAttr2"
           value={ cardAttr2 }
           onChange={ onInputChange }
+          dataTestid="attr2-input"
         />
         <NumberInput
           label="Atributo 3"
-          name="attr3-input"
+          name="cardAttr3"
           value={ cardAttr3 }
           onChange={ onInputChange }
+          dataTestid="attr3-input"
         />
         <TextInput
           label="Imagem"
-          name="image-input"
+          name="cardImage"
           value={ cardImage }
           onChange={ onInputChange }
+          dataTestid="image-input"
         />
         <Select
           label="Raridade"
-          name="rare-input"
+          name="cardRare"
           value={ cardRare }
           onChange={ onInputChange }
           options={ ['normal', 'raro', 'muito raro'] }
+          dataTestid="rare-input"
         />
         <CheckboxInput
           label="Super Trunfo"
-          name="trunfo-input"
+          name="cardTrunfo"
           checked={ cardTrunfo }
           onChange={ onInputChange }
+          dataTestid="trunfo-input"
         />
         <Button
           label="Salvar"

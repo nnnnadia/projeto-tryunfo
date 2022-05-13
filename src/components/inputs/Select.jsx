@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../../style/inputs.css';
 
 export default class Select extends Component {
   render() {
@@ -9,18 +10,23 @@ export default class Select extends Component {
       options,
       value,
       onChange,
+      dataTestid,
     } = this.props;
     return (
       <>
-        <label htmlFor={ name }>
+        <label
+          className="form-label full-label"
+          htmlFor={ name }
+        >
           { label }
         </label>
         <select
+          className="form-input"
           id={ name }
           name={ name }
           value={ value }
           onChange={ onChange }
-          data-testid={ name }
+          data-testid={ dataTestid }
         >
           { options.map((option) => (
             <option key={ option }>{option}</option>
@@ -37,4 +43,5 @@ Select.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  dataTestid: PropTypes.string.isRequired,
 };

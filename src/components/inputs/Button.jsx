@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../../style/inputs.css';
 
 export default class Button extends Component {
   render() {
@@ -11,6 +12,7 @@ export default class Button extends Component {
     } = this.props;
     return (
       <button
+        className="save-button"
         type="button"
         data-testid={ name }
         disabled={ isSaveButtonDisabled }
