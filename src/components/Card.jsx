@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import '../style/Card.css';
 
 export default class Card extends Component {
-  countStars = (cardRare) => {
-    if (cardRare === 'muito raro') return '★★★';
-    if (cardRare === 'raro') return '★★';
-    return '★';
-  }
+  // countStars = (cardRare) => {
+  //   if (cardRare === 'muito raro') return '★★★';
+  //   if (cardRare === 'raro') return '★★';
+  //   return '★';
+  // }
 
   render() {
     const { props: {
@@ -19,7 +19,8 @@ export default class Card extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-    }, countStars } = this;
+    } } = this;
+    // }, countStars } = this;
     return (
       <div className="card">
         <div className="card-content">
@@ -28,7 +29,8 @@ export default class Card extends Component {
               className="card-stars"
               data-testid="rare-card"
             >
-              { countStars(cardRare) }
+              { cardRare }
+              {/* { countStars(cardRare) } */}
             </span>
             <h2
               className="card-name"
