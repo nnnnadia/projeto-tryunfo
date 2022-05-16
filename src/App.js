@@ -14,6 +14,7 @@ class App extends React.Component {
     cardTrunfo: false,
     hasTrunfo: false,
     isSaveButtonDisabled: true,
+    savedCards: [],
   };
 
   validateText = () => {
@@ -68,7 +69,37 @@ class App extends React.Component {
   }
 
   onSaveButtonClick = () => {
-    console.log('oi');
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+    const objectToSave = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+    this.setState(({ savedCards }) => ({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: false,
+      savedCards: [...savedCards, objectToSave],
+    }));
   }
 
   render() {
