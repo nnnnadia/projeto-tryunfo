@@ -89,6 +89,9 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
     };
+    if (cardTrunfo) {
+      this.setState({ hasTrunfo: true });
+    }
     this.setState(({ savedCards }) => ({
       cardName: '',
       cardDescription: '',
