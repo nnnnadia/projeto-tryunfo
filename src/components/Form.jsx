@@ -90,8 +90,8 @@ export default class Form extends Component {
         <Button
           label="Salvar"
           name="save-button"
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onSaveButtonClick={ onSaveButtonClick }
+          isButtonDisabled={ isSaveButtonDisabled }
+          onButtonClick={ onSaveButtonClick }
         />
       </form>
     );

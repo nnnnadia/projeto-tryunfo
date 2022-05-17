@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
+import Button from './inputs/Button';
 
 export default class Collection extends Component {
   render() {
-    const { savedCards } = this.props;
+    const { savedCards, onDeleteButtonClick } = this.props;
     return (
-      <div>
-        { savedCards.map((card, index) => <Card key={ index } { ...card } />) }
+      <div className="container-row">
+        { savedCards.map((card) => (
+          <div className="container-column" key={ card.cardId }>
+            <Card
+              { ...card }
+            />
+            <Button
+              label="Excluir"
+              name="delete-button"
+              isButtonDisabled={ false }
+              onButtonClick={ () => onDeleteButtonClick(card.cardId) }
+            />
+          </div>
+        )) }
       </div>
     );
   }
@@ -24,4 +37,5 @@ Collection.propTypes = {
     cardRare: PropTypes.string,
     cardTrunfo: PropTypes.bool,
   })).isRequired,
+  onDeleteButtonClick: PropTypes.func.isRequired,
 };

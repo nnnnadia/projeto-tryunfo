@@ -1,3 +1,4 @@
 .new-card-form {
-  margin: 0 auto;
+  flex-grow: 1;
+  width: 50%;
 }

@@ -70,6 +70,15 @@ class App extends React.Component {
       () => this.validateInputs());
   }
 
+  getRandomId = () => {
+    const idMinLength = 1000000;
+    const idMaxLength = 9999999;
+    const idNumber = Math.floor(
+      (Math.random() * (idMaxLength - idMinLength)) + idMinLength,
+    ).toString();
+    return idNumber;
+  }
+
   onSaveButtonClick = () => {
     const {
       cardName,
@@ -90,6 +99,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      cardId: this.getRandomId(),
     };
     if (cardTrunfo) {
       this.setState({ hasTrunfo: true });
@@ -107,6 +117,16 @@ class App extends React.Component {
     }));
   }
 
+  onDeleteButtonClick = (cardId) => {
+    const { savedCards } = this.state;
+    const deletedCard = savedCards.find((card) => card.cardId === cardId);
+    const newSavedCards = savedCards.filter((card) => card.cardId !== cardId);
+    if (deletedCard.cardTrunfo) {
+      this.setState({ hasTrunfo: false });
+    }
+    this.setState({ savedCards: newSavedCards });
+  }
+
   render() {
     const { state: {
       cardName,
@@ -122,7 +142,8 @@ class App extends React.Component {
       savedCards,
     },
     onInputChange,
-    onSaveButtonClick } = this;
+    onSaveButtonClick,
+    onDeleteButtonClick } = this;
     return (
       <>
         <h1>Tryunfo</h1>
@@ -154,6 +175,7 @@ class App extends React.Component {
         </div>
         <Collection
           savedCards={ savedCards }
+          onDeleteButtonClick={ onDeleteButtonClick }
         />
       </>
     );

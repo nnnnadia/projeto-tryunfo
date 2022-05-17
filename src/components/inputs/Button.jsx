@@ -7,16 +7,16 @@ export default class Button extends Component {
     const {
       label,
       name,
-      isSaveButtonDisabled,
-      onSaveButtonClick,
+      isButtonDisabled,
+      onButtonClick,
     } = this.props;
     return (
       <button
         className="save-button"
         type="button"
         data-testid={ name }
-        disabled={ isSaveButtonDisabled }
-        onClick={ onSaveButtonClick }
+        disabled={ isButtonDisabled }
+        onClick={ onButtonClick }
       >
         { label }
       </button>
@@ -27,6 +27,6 @@ export default class Button extends Component {
 Button.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  isSaveButtonDisabled: PropTypes.bool.isRequired,
-  onSaveButtonClick: PropTypes.func.isRequired,
+  isButtonDisabled: PropTypes.bool.isRequired,
+  onButtonClick: PropTypes.func.isRequired,
 };
