@@ -10,6 +10,7 @@ export default class Select extends Component {
       options,
       value,
       onChange,
+      disabled,
       dataTestid,
     } = this.props;
     return (
@@ -28,6 +29,7 @@ export default class Select extends Component {
           name={ name }
           value={ value }
           onChange={ onChange }
+          disabled={ disabled }
           data-testid={ dataTestid }
         >
           { options.map((option) => (
@@ -44,10 +46,12 @@ Select.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   dataTestid: PropTypes.string.isRequired,
 };
 
 Select.defaultProps = {
   label: '',
+  disabled: false,
 };

@@ -21,21 +21,27 @@ export default class CheckboxInput extends Component {
           onChange={ onChange }
           data-testid={ dataTestid }
         />
-        <label
-          className="form-label less-label"
-          htmlFor={ name }
-        >
-          { label }
-        </label>
+        { label && (
+          <label
+            className="form-label less-label"
+            htmlFor={ name }
+          >
+            { label }
+          </label>
+        )}
       </>
     );
   }
 }
 
 CheckboxInput.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   name: PropTypes.string.isRequired,
   checked: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   dataTestid: PropTypes.string.isRequired,
 };
+
+CheckboxInput.defaultProps = {
+  label: '',
+}

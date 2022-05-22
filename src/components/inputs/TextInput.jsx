@@ -10,6 +10,7 @@ export default class TextInput extends Component {
       name,
       value,
       onChange,
+      disabled,
       dataTestid,
     } = this.props;
     return (
@@ -30,6 +31,7 @@ export default class TextInput extends Component {
           name={ name }
           value={ value }
           onChange={ onChange }
+          disabled={ disabled }
           id={ name }
           data-testid={ dataTestid }
         />
@@ -44,10 +46,12 @@ TextInput.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
   dataTestid: PropTypes.string.isRequired,
 };
 
 TextInput.defaultProps = {
   label: '',
   placeholder: '',
+  disabled: false,
 };

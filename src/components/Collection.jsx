@@ -8,6 +8,7 @@ export default class Collection extends Component {
   state = {
     filterName: '',
     filterRarity: '',
+    filterTrunfo: false,
   };
 
   onInputChange = ({ target }) => {
@@ -15,7 +16,7 @@ export default class Collection extends Component {
     const value = type === 'checkbox'
       ? target.checked
       : target.value;
-    this.setState({ [name]: value }, () => this.filterCards);
+    this.setState({ [name]: value });
   }
 
   render() {
@@ -27,6 +28,7 @@ export default class Collection extends Component {
       state: {
         filterName,
         filterRarity,
+        filterTrunfo,
       },
       onInputChange,
     } = this;
@@ -36,29 +38,43 @@ export default class Collection extends Component {
           <FilterCollectionForm
             filterName={ filterName }
             filterRarity={ filterRarity }
+            filterTrunfo={ filterTrunfo }
             onInputChange={ onInputChange }
           />
         </div>
         <div className="container-row">
-          { savedCards
-            .filter((card) => card.cardName.includes(filterName))
-            .filter((card) => {
-              if (filterRarity === 'todas' || filterRarity === '') return card;
-              return card.cardRare === filterRarity;
-            })
-            .map((card) => (
-              <div className="container-column" key={ card.cardId }>
-                <Card
-                  { ...card }
-                />
+          { filterTrunfo
+            ? (
+              <>
+                <Card { ...savedCards.find((card) => card.cardTrunfo === true) } />
                 <Button
                   label="Excluir"
                   name="delete-button"
                   isButtonDisabled={ false }
                   onButtonClick={ () => onDeleteButtonClick(card.cardId) }
                 />
-              </div>
-            )) }
+              </>
+            ) : (
+              savedCards
+                .filter((card) => card.cardName.includes(filterName))
+                .filter((card) => {
+                  if (filterRarity === 'todas' || filterRarity === '') return card;
+                  return card.cardRare === filterRarity;
+                })
+                .map((card) => (
+                  <div className="container-column" key={ card.cardId }>
+                    <Card
+                      { ...card }
+                    />
+                    <Button
+                      label="Excluir"
+                      name="delete-button"
+                      isButtonDisabled={ false }
+                      onButtonClick={ () => onDeleteButtonClick(card.cardId) }
+                    />
+                  </div>
+                ))
+            )}
         </div>
       </div>
     );
