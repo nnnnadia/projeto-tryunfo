@@ -8,7 +8,7 @@ import TextArea from './inputs/TextArea';
 import TextInput from './inputs/TextInput';
 import '../style/NewCardForm.css';
 
-export default class NewCardForm extends Component {
+export default class Form extends Component {
   render() {
     const {
       cardName,
@@ -98,7 +98,7 @@ export default class NewCardForm extends Component {
   }
 }
 
-NewCardForm.propTypes = {
+Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.string.isRequired,

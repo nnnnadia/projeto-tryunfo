@@ -43,7 +43,7 @@ export default class Collection extends Component {
           { savedCards
             .filter((card) => card.cardName.includes(filterName))
             .filter((card) => {
-              if (filterRarity === 'todas') return card;
+              if (filterRarity === 'todas' || filterRarity === '') return card;
               return card.cardRare === filterRarity;
             })
             .map((card) => (

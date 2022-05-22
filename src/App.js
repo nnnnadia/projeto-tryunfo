@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Collection from './components/Collection';
-import NewCardForm from './components/NewCardForm';
+import NewCardForm from './components/Form';
 import './style/App.css';
 
 class App extends React.Component {
