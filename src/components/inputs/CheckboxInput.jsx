@@ -44,4 +44,4 @@ CheckboxInput.propTypes = {
 
 CheckboxInput.defaultProps = {
   label: '',
-}
+};
