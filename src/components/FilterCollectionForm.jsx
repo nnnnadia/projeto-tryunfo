@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TextInput from './inputs/TextInput';
+import Select from './inputs/Select';
 
 export default class FilterCollectionForm extends Component {
   render() {
     const {
       filterName,
+      filterRarity,
       onInputChange,
     } = this.props;
     return (
@@ -18,6 +20,13 @@ export default class FilterCollectionForm extends Component {
           onChange={ onInputChange }
           dataTestid="name-filter"
         />
+        <Select
+          name="filterRarity"
+          value={ filterRarity }
+          onChange={ onInputChange }
+          options={ ['normal', 'raro', 'muito raro', 'todas'] }
+          dataTestid="rare-filter"
+        />
       </div>
     );
   }
@@ -25,5 +34,6 @@ export default class FilterCollectionForm extends Component {
 
 FilterCollectionForm.propTypes = {
   filterName: PropTypes.string.isRequired,
+  filterRarity: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
 };

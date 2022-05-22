@@ -14,12 +14,14 @@ export default class Select extends Component {
     } = this.props;
     return (
       <>
-        <label
-          className="form-label full-label"
-          htmlFor={ name }
-        >
-          { label }
-        </label>
+        { label && (
+          <label
+            className="form-label full-label"
+            htmlFor={ name }
+          >
+            { label }
+          </label>
+        )}
         <select
           className="form-input"
           id={ name }
@@ -38,10 +40,14 @@ export default class Select extends Component {
 }
 
 Select.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   dataTestid: PropTypes.string.isRequired,
+};
+
+Select.defaultProps = {
+  label: '',
 };

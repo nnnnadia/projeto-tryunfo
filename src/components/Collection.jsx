@@ -7,6 +7,7 @@ import FilterCollectionForm from './FilterCollectionForm';
 export default class Collection extends Component {
   state = {
     filterName: '',
+    filterRarity: '',
   };
 
   onInputChange = ({ target }) => {
@@ -25,6 +26,7 @@ export default class Collection extends Component {
       },
       state: {
         filterName,
+        filterRarity,
       },
       onInputChange,
     } = this;
@@ -33,12 +35,17 @@ export default class Collection extends Component {
         <div className="container-column">
           <FilterCollectionForm
             filterName={ filterName }
+            filterRarity={ filterRarity }
             onInputChange={ onInputChange }
           />
         </div>
         <div className="container-row">
           { savedCards
             .filter((card) => card.cardName.includes(filterName))
+            .filter((card) => {
+              if (filterRarity === 'todas') return card;
+              return card.cardRare === filterRarity;
+            })
             .map((card) => (
               <div className="container-column" key={ card.cardId }>
                 <Card
