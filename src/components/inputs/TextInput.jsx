@@ -6,6 +6,7 @@ export default class TextInput extends Component {
   render() {
     const {
       label,
+      placeholder,
       name,
       value,
       onChange,
@@ -13,15 +14,19 @@ export default class TextInput extends Component {
     } = this.props;
     return (
       <>
-        <label
-          className="form-label full-label"
-          htmlFor={ name }
-        >
-          { label }
-        </label>
+        { label
+          && (
+            <label
+              className="form-label full-label"
+              htmlFor={ name }
+            >
+              { label }
+            </label>
+          )}
         <input
           className="form-input"
           type="text"
+          placeholder={ placeholder }
           name={ name }
           value={ value }
           onChange={ onChange }
@@ -34,9 +39,15 @@ export default class TextInput extends Component {
 }
 
 TextInput.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   dataTestid: PropTypes.string.isRequired,
+};
+
+TextInput.defaultProps = {
+  label: '',
+  placeholder: '',
 };

@@ -6,9 +6,9 @@ import NumberInput from './inputs/NumberInput';
 import Select from './inputs/Select';
 import TextArea from './inputs/TextArea';
 import TextInput from './inputs/TextInput';
-import '../style/Form.css';
+import '../style/NewCardForm.css';
 
-export default class Form extends Component {
+export default class NewCardForm extends Component {
   render() {
     const {
       cardName,
@@ -98,7 +98,7 @@ export default class Form extends Component {
   }
 }
 
-Form.propTypes = {
+NewCardForm.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.string.isRequired,

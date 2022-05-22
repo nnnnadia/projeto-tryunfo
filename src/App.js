@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Collection from './components/Collection';
-import Form from './components/Form';
+import NewCardForm from './components/NewCardForm';
 import './style/App.css';
 
 class App extends React.Component {
@@ -148,7 +148,7 @@ class App extends React.Component {
       <>
         <h1>Tryunfo</h1>
         <div className="container-row">
-          <Form
+          <NewCardForm
             cardName={ cardName }
             cardDescription={ cardDescription }
             cardAttr1={ cardAttr1 }
