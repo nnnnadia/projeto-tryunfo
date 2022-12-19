@@ -18,4 +18,4 @@ Neste projeto foi desenvolvido um jogo no estilo Super Trunfo! Ao utilizar essa 
 
 #### Print da aplicação
 
-![print da aplicação em execução](./tryunfo-print.png
+![print da aplicação em execução](./tryunfo-print.png)
